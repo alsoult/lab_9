@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercise_4</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      #square {
+        position: absolute;
+        top: 200px;
+        left: 200px;
+        width: 50px;
+        height: 50px;
+        background-color: lightslategray;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="square"></div>
+    <script>
+      document.addEventListener("mousemove", (event) => {
+        let square = document.getElementById("square");
+        let x0 = square.offsetLeft + square.offsetWidth / 2,
+          y0 = square.offsetTop + square.offsetHeight / 2;
+        let angle = Math.atan2(event.clientY - y0, event.clientX - x0);
+
+        square.style.transform = "rotate(" + angle + "rad)";
+      });
+    </script>
+  </body>
+</html>

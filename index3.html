@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercise_3</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+      }
+      #football-field {
+        position: relative;
+        width: 100%;
+        height: 100%;
+      }
+      #soccer-ball {
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        left: 0;
+        top: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <img
+      src="images/football_field.jpg"
+      alt="Football field"
+      id="football-field"
+    />
+    <img src="images/soccer_ball.png" alt="Soccer ball" id="soccer-ball" />
+    <script>
+      function translate(x, y) {
+        document.getElementById("soccer-ball").style.transition = "1s all";
+        document.getElementById("soccer-ball").style.transform =
+          "translate(" + x + "px, " + y + "px)";
+      }
+
+      document
+        .getElementById("football-field")
+        .addEventListener("click", (event) => {
+          let x =
+            event.clientX -
+            document.getElementById("soccer-ball").clientWidth / 2;
+          let y =
+            event.clientY -
+            document.getElementById("soccer-ball").clientHeight / 2;
+
+          if (x < 0) x = 0;
+          if (y < 0) y = 0;
+          if (
+            x >
+            document.getElementById("football-field").clientWidth -
+              document.getElementById("soccer-ball").clientWidth
+          )
+            x =
+              document.getElementById("football-field").clientWidth -
+              document.getElementById("soccer-ball").clientWidth;
+          if (
+            y >
+            document.getElementById("football-field").clientHeight -
+              document.getElementById("soccer-ball").clientHeight
+          )
+            y =
+              document.getElementById("football-field").clientHeight -
+              document.getElementById("soccer-ball").clientHeight;
+
+          translate(x, y);
+        });
+    </script>
+  </body>
+</html>
